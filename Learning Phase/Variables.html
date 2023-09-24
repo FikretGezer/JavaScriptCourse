@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Variables</title>
+    </head>
+    <body>
+        <p>Cart Quantity</p>
+        <button onclick="ShowQuantity()">Show Quantity</button>
+        <button onclick="AddQuantity(1)">Add to Cart</button>
+        <button onclick="AddQuantity(2)">+2</button>
+        <button onclick="AddQuantity(3)">+3</button>
+        <button onclick="ResetQuantity()">Reset Cart</button>
+        <script>
+            var quantity = 0;
+            function ShowQuantity()
+            {
+                console.log(`Cart Quantity: ${quantity}`);
+            }
+            function AddQuantity(amount)
+            {
+                quantity += amount;
+                console.log(`Cart Quantity: ${quantity}`);
+            }
+            function ResetQuantity()
+            {
+                quantity = 0;
+                console.log(`Cart Quantity: ${quantity}`);
+            }           
+            
+        </script>
+    </body>
+</html>

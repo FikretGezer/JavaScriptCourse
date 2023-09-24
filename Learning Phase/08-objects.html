@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Objects</title>
+    </head>
+    <body>
+        <script>
+            const products = {
+                name: 'socks',
+                price: '$'+ 60,
+                rating: {
+                    stars: '4.5',
+                    value: 80
+                },
+                func: function insideFunction()
+                {
+                    console.log('Inside function');
+                }
+            };
+            products.name = 'trousers';
+            console.log(products.rating);
+            products.func();
+
+            var jasonString = JSON.stringify(products);
+            console.log(jasonString);
+            console.log(JSON.parse(jasonString));
+
+            
+        </script>
+    </body>
+</html>
