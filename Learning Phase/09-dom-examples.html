@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Dom Examples</title>
+    </head>
+    <body>
+        <div class="first-example">
+            <button class="js-first-button" onclick="ChangeInner()">First</button>
+            <button class="js-second-button">Second</button>
+        </div>
+        
+        <div style="margin-top: 20px;" class="second-example">
+            <input class="js-name" type="text" placeholder="Name" onkeydown="DisplayNameOnEnter(event)"> <button onclick="DisplayName()">Enter</button>
+            <p class="js-display-name"></p>
+        </div>
+
+        <script>
+            /* First Example*/
+            var firstButtonElement = document.querySelector('.js-first-button');
+            var secondButtonElement = document.querySelector('.js-second-button');
+            
+            var previous;
+            function ChangeInner()
+            {
+                previous = firstButtonElement.innerText;
+                firstButtonElement.innerText = secondButtonElement.innerText;
+                secondButtonElement.innerText = previous;
+            }
+
+            /* Second Example*/
+            function DisplayName()
+            {
+                const displayElement = document.querySelector('.js-display-name');
+                const nameElement = document.querySelector('.js-name');
+                displayElement.innerText = `Your name is ${nameElement.value}`;
+            }
+            function DisplayNameOnEnter(event)
+            {
+                if(event.key === 'Enter') DisplayName();
+            }
+
+        </script>
+    </body>
+</html>
