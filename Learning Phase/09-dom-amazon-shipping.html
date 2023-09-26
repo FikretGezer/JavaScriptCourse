@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Amazon Shipping</title>
+    </head>
+    <body>
+        <p>Amazon Shipping Calculator</p>
+        <p>Order under $40 = +$10 shipping</p>
+        <p>Order over $40 = FREE shipping</p>
+        <input class="js-price" type="text" placeholder="Price" onkeydown="CalculateOnEnter(event)"> <button onclick="CalculatePrice()">Calculate</button>
+        <p class="js-result"></p>
+        
+        <script>
+            const priceElement = document.querySelector('.js-price');
+            const resultElement = document.querySelector('.js-result');
+            function CalculatePrice()
+            { 
+                var result = priceElement.value < 40 && priceElement.value > 0 ? Number(priceElement.value) + 10 : Number(priceElement.value);  
+                console.log();
+                if(!isNaN(Number(result)))
+                    resultElement.innerHTML = result;
+            }
+            function CalculateOnEnter(event)
+            {
+                if(event.key === 'Enter') CalculatePrice();
+            }
+        </script>
+    </body>
+</html>

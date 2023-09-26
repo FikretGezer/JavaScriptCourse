@@ -4,11 +4,18 @@
         <title>Rock Paper Scissors</title>
     </head>
     <body>
+
         <p>Rock Paper Scissors</p>
         <button onclick="Game('Rock')">Rock</button>
         <button onclick="Game('Paper')">Paper</button>
         <button onclick="Game('Scissors')">Scissors</button>
+
+        <p class="js-result"></p>
+        <p class="js-moves"></p>
+        <p class="js-score"></p>
+
         <button onclick="ResetScore()">Reset Score</button>
+
         <script>
             var Scores = JSON.parse(localStorage.getItem('score'));
             if(Scores == null)
@@ -19,6 +26,7 @@
                     Tie: 0
                 };
             }
+            UpdateScoreElement();
             function Game(choice)
             {
                 var compChoice;
@@ -34,37 +42,45 @@
                     result = 'Tie';
                 }
                 else if(choice === 'Rock' && compChoice === 'Paper') {
-                    result = 'Lose';                    
+                    result = 'You Lost';                    
                 } 
                 else if(choice === 'Rock' && compChoice === 'Scissors'){
-                    result = 'Win';                    
+                    result = 'You Won';                    
                 }
                 else if(choice === 'Paper' && compChoice === 'Rock'){
-                    result = 'Win';                    
+                    result = 'You Won';                    
                 }
                 else if(choice === 'Paper' && compChoice === 'Scissors'){
-                    result = 'Lose';                    
+                    result = 'You Lost';                    
                 } 
                 else if(choice === 'Scissors' && compChoice === 'Rock'){
-                    result = 'Lose';                    
+                    result = 'You Lost';                    
                 }
-                else if(choice === 'Scissors' && compChoice === 'Paper'){
-                    result = 'Win';                    
+                //else if(choice === 'Scissors' && compChoice === 'Paper'){
+                else {
+                    result = 'You Won';                    
                 } 
                 UpdateScore(result);
-                alert(`Your choice: ${choice}, Comp Choice: ${compChoice}, Result: ${result}\n Win: ${Scores.Win}, Lose: ${Scores.Lose}, Tie: ${Scores.Tie}`);
+                document.querySelector('.js-result').innerHTML = result;
+                document.querySelector('.js-moves').innerHTML = `Your choice: ${choice}, Comp Choice: ${compChoice}`;
+                UpdateScoreElement();
             }
             function UpdateScore(result)
             {
-                if(result === 'Win') Scores.Win++;
-                else if(result === 'Lose') Scores.Lose++;
+                if(result === 'You Won') Scores.Win++;
+                else if(result === 'You Lost') Scores.Lose++;
                 else Scores.Tie++;
-                localStorage.setItem('score', JSON.stringify(Scores));                
+                localStorage.setItem('score', JSON.stringify(Scores));       
+            }
+            function UpdateScoreElement()
+            {
+                document.querySelector('.js-score').innerHTML = `Win: ${Scores.Win}, Lose: ${Scores.Lose}, Tie: ${Scores.Tie}`;
             }
             function ResetScore()
             {
                 Scores.Win = Scores.Lose = Scores.Tie = 0;
                 localStorage.removeItem('score');
+                UpdateScoreElement();
             }
         </script>
     </body>
