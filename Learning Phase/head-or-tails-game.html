@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Head or Tails</title>
+        <style>
+            body {
+                background-color: black;
+            }
+        </style>
+    </head>
+    <body>
+        <button onclick="GuessCoin('Heads')">Heads</button>
+        <button onclick="GuessCoin('Tails')">Tails</button>
+        <script>
+            function GuessCoin(guess){
+                var rnd = Math.random() * 100;
+                var compGuess = rnd <= 50 ? 'Heads' : 'Tails';
+
+
+                if(guess === compGuess) alert(`You guessed ${guess}, computer chose ${compGuess} and you WON`);
+                else alert(`You guessed ${guess}, computer chose ${compGuess} and you LOST`);
+                console.log(rnd);
+            }
+            function getRandomInt(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
+            }
+
+        </script>
+    </body>
+</html>
