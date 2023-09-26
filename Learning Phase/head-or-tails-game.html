@@ -11,20 +11,42 @@
     <body>
         <button onclick="GuessCoin('Heads')">Heads</button>
         <button onclick="GuessCoin('Tails')">Tails</button>
+        <button onclick="ResetValues()">Reset Score</button>
         <script>
+
+            var scores = JSON.parse(localStorage.getItem('score')) || {
+                win: 0,
+                lose: 0                
+            };
+            // const scores = {
+            //     win: 0,
+            //     lose: 0                
+            // }
+            var rnd;
+            var compGuess;
+            var result;
             function GuessCoin(guess){
-                var rnd = Math.random() * 100;
-                var compGuess = rnd <= 50 ? 'Heads' : 'Tails';
+                rnd = Math.random() * 100;
+                compGuess = rnd <= 50 ? 'Heads' : 'Tails';
+              
+                if(guess === compGuess){                    
+                    result = 'WIN';
+                    scores.win++;
+                } 
+                else{
+                    result = 'LOST';
+                    scores.lose++;
+                } 
 
+                alert(`You guessed ${guess}, computer chose ${compGuess} and you ${result}
+Win: ${scores.win}, Lose: ${scores.lose}`);
 
-                if(guess === compGuess) alert(`You guessed ${guess}, computer chose ${compGuess} and you WON`);
-                else alert(`You guessed ${guess}, computer chose ${compGuess} and you LOST`);
-                console.log(rnd);
+            localStorage.setItem('score', JSON.stringify(scores));
             }
-            function getRandomInt(min, max) {
-            min = Math.ceil(min);
-            max = Math.floor(max);
-            return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
+            function ResetValues()
+            {
+                scores.win = scores.lose = 0;
+                localStorage.removeItem('score');
             }
 
         </script>
