@@ -1,27 +1,3 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Rock Paper Scissors</title>
-        <style>
-            body {
-                background-color: rgb(50, 61, 80);
-            }
-        </style>
-    </head>
-    <body>
-
-        <p>Rock Paper Scissors</p>
-        <button onclick="Game('Rock')">Rock</button>
-        <button onclick="Game('Paper')">Paper</button>
-        <button onclick="Game('Scissors')">Scissors</button>
-
-        <p class="js-result"></p>
-        <p class="js-moves"></p>
-        <p class="js-score"></p>
-
-        <button onclick="ResetScore()">Reset Score</button>
-
-        <script>
             var Scores = JSON.parse(localStorage.getItem('score'));
             if(Scores == null)
             {
@@ -39,35 +15,42 @@
                 var result;
                 
                 
-                if(rnd <= 1/3) compChoice = 'Rock';
-                else if(rnd <= 2/3 && rnd > 1/3) compChoice = 'Paper';
-                else compChoice = 'Scissors';
+                if(rnd <= 1/3) compChoice = 'rock';
+                else if(rnd <= 2/3 && rnd > 1/3) compChoice = 'paper';
+                else compChoice = 'scissors';
                 
                 if(compChoice === choice){
                     result = 'Tie';
                 }
-                else if(choice === 'Rock' && compChoice === 'Paper') {
+                else if(choice === 'rock' && compChoice === 'paper') {
                     result = 'You Lost';                    
                 } 
-                else if(choice === 'Rock' && compChoice === 'Scissors'){
+                else if(choice === 'rock' && compChoice === 'scissors'){
                     result = 'You Won';                    
                 }
-                else if(choice === 'Paper' && compChoice === 'Rock'){
+                else if(choice === 'paper' && compChoice === 'rock'){
                     result = 'You Won';                    
                 }
-                else if(choice === 'Paper' && compChoice === 'Scissors'){
+                else if(choice === 'paper' && compChoice === 'scissors'){
                     result = 'You Lost';                    
                 } 
-                else if(choice === 'Scissors' && compChoice === 'Rock'){
+                else if(choice === 'scissors' && compChoice === 'rock'){
                     result = 'You Lost';                    
                 }
-                //else if(choice === 'Scissors' && compChoice === 'Paper'){
+                //else if(choice === 'Scissors' && compChoice === 'paper'){
                 else {
                     result = 'You Won';                    
                 } 
                 UpdateScore(result);
+                //if(choice)
                 document.querySelector('.js-result').innerHTML = result;
-                document.querySelector('.js-moves').innerHTML = `Your choice: ${choice}, Comp Choice: ${compChoice}`;
+                //document.querySelector('.js-moves').innerHTML = `Your choice: ${choice}, Comp Choice: ${compChoice}`;
+
+                document.querySelector('.js-moves').innerHTML = `You
+                <img class="move-icon" src="images/rock-paper-scissors/${choice}-emoji.png" alt="">
+                <img class="move-icon" src="images/rock-paper-scissors/${compChoice}-emoji.png" alt="">
+                Computer`;
+
                 UpdateScoreElement();
             }
             function UpdateScore(result)
@@ -87,6 +70,3 @@
                 localStorage.removeItem('score');
                 UpdateScoreElement();
             }
-        </script>
-    </body>
-</html>

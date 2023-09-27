@@ -1,0 +1,46 @@
+body {
+    background-color: rgb(71, 71, 71);
+    font-family: Arial, Helvetica, sans-serif;
+}
+.title {
+    font-weight: bold;
+    font-size: 15px;
+    color: white;
+}
+.enabler-buttons {
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    margin-right: 5px;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+
+    transition: background-color 0.2s;
+}
+.enabler-buttons:hover {
+    background-color: rgb(182, 182, 182);
+}
+.enabler-buttons:focus {
+    color: white;
+    background-color: rgb(0, 0, 0);
+}
+
+/*Exercise 2*/
+.button-styler {
+    width: 30px;
+    height: 30px;
+
+    border: none;
+    border-radius: 15px;
+
+    margin-bottom: 1px;
+    margin-right: 1px;
+
+    background-color: grey;
+
+    cursor: pointer;
+}
+.operations {
+    background-color: orange;
+}

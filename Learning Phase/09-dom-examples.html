@@ -4,14 +4,39 @@
         <title>Dom Examples</title>
     </head>
     <body>
-        <div class="first-example">
+        <div class="first-example" style="background-color: aqua;">
+            <p>First Example</p>
             <button class="js-first-button" onclick="ChangeInner()">First</button>
             <button class="js-second-button">Second</button>
         </div>
         
-        <div style="margin-top: 20px;" class="second-example">
+        <div style="margin-top: 20px; background-color: antiquewhite;" class="second-example" >
+            <p>Second Example</p>
             <input class="js-name" type="text" placeholder="Name" onkeydown="DisplayNameOnEnter(event)"> <button onclick="DisplayName()">Enter</button>
             <p class="js-display-name"></p>
+        </div>
+        <div class="third-example" style="background-color: chartreuse;">
+            <p>Third Example</p>
+            <input class="js-price-input" type="text" placeholder="Price"> <button class="js-ultimate-price-button" onclick="CalculateUltimatePrice()">Calculate</button>
+            <p class="js-ultimate-price"></p>
+        </div>
+        <div class="fourth-example" style="background-color: yellow ">
+            <p>Fourth Example</p>
+            <input class="js-writer-input" type="text" onkeyup="WriteText()">
+            <p class="js-reader"></p>
+        </div>
+        <div style="background-color: lightcoral ">
+            <p>Fifth Example</p>
+
+            <button onclick="ShowTheCart()">Show Quantity</button>
+            <button onclick="AddToCart(1)">Add To Cart</button>
+            <button onclick="AddToCart(2)">+2</button>
+            <button onclick="AddToCart(3)">+3</button>
+            <button onclick="RemoveFromCart(1)">Remove From Cart</button>
+            <button onclick="RemoveFromCart(2)">-2</button>
+            <button onclick="RemoveFromCart(3)">-3</button>
+
+            <p class="js-cart-result"></p>
         </div>
 
         <script>
@@ -38,7 +63,54 @@
             {
                 if(event.key === 'Enter') DisplayName();
             }
-
+            /* Third Example*/
+            function CalculateUltimatePrice()
+            {
+                //const priceButtonElement = document.querySelector('.js-ultimate-price-button');
+                const priceInputElementValue = document.querySelector('.js-price-input').value;
+                const ultimatePriceElement = document.querySelector('.js-ultimate-price');
+                
+                var numbr = Number(priceInputElementValue);
+                var price;
+                if(!isNaN(numbr) && numbr > 0)
+                {
+                    if(numbr < 40){
+                        price = `Price: $${(numbr * 100 + 10 * 100) / 100}`;                        
+                    }
+                    else price = `Price: $${numbr}`;
+                    ultimatePriceElement.innerHTML = price;
+                }
+            }
+            /* Fourth Example*/
+            function WriteText()
+            {
+                const writerElement = document.querySelector('.js-writer-input');
+                const readerElement = document.querySelector('.js-reader');
+                readerElement.innerHTML = writerElement.value;
+            }
+            /* Fifth Example*/
+            const resultElement = document.querySelector('.js-cart-result');
+            var cart = JSON.parse(localStorage.getItem('cartQuantity')) || 0;
+            ShowTheCart();
+            function AddToCart(addAmount)
+            {                
+                cart += addAmount;
+                localStorage.setItem('cartQuantity', JSON.stringify(cart));
+                ShowTheCart();
+            }
+            function RemoveFromCart(removeAmount)
+            {
+                if(cart - removeAmount >= 0)
+                    cart -= removeAmount;
+                else cart = 0;
+                localStorage.setItem('cartQuantity', JSON.stringify(cart));
+                ShowTheCart();
+            }
+            function ShowTheCart()
+            {
+                resultElement.innerHTML = `Cart Quantity: ${cart}`;
+            }
+            
         </script>
     </body>
 </html>

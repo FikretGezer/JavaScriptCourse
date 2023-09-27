@@ -1,0 +1,53 @@
+body {
+    background-color: rgb(25, 25, 25);
+    font-family: Arial, Helvetica, sans-serif;
+}
+p {
+    color: white;
+}
+.game-name {
+   color: white;
+   font-weight: bold;
+   font-size: 30px;                
+}
+
+.move-buttons {
+    border-width: 3px;
+    border-style: solid;
+    border-radius: 100%;
+    border-color: white;
+
+    height: 120px;
+    width: 120px;
+
+    margin-right: 10px;
+
+    background-color: rgb(25, 25, 25);
+
+    cursor: pointer;
+}
+
+.move-icon {
+    width: 50px;                
+}
+
+.result-text {
+    margin-top: 50px;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.result-other {
+    margin-top: 50px;
+    font-size: 15px;                
+}
+.result-other img img {
+    width: 50px;
+}
+
+.reset-score-button {
+    border: none;
+    background-color: white;
+    font-size: 15px;
+    padding: 10px 15px;
+}

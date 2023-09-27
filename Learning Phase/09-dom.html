@@ -3,12 +3,21 @@
     <head>
         <title>DOM</title>
         <style>
-            
+            .subscribe-button {
+                padding: 10px 15px;
+
+                border: none;
+                border-radius: 20px;
+
+                background-color: black;
+                color: white;
+                font-weight: bold;
+            }
         </style>
     </head>
     <body>
         <p>Youtube Subscribe Button</p>
-        <button onclick="Subscribe()" class="js-button">Subscribe</button>
+        <button onclick="Subscribe()" class="js-button subscribe-button">Subscribe</button>
         <script>
             //console.log(document.querySelector('button').className);
             var buttonElement = document.querySelector('.js-button');

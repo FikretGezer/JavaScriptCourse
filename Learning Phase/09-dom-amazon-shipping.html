@@ -2,12 +2,41 @@
 <html>
     <head>
         <title>Amazon Shipping</title>
+        <style>
+            .price-input {
+                height: 30px;
+                margin: 0px;
+                padding-left: 5px;
+                border-style: solid;
+            }
+            .calculate-button {
+                border: none;
+                padding: 10px 15px;
+
+                margin-left: -4px;
+
+                background-color: rgb(99, 165, 0);
+                color: white;
+
+                font-weight: bold;
+                
+                cursor: pointer;
+
+                transition: background-color 0.2s;
+            }
+            .calculate-button:hover {
+                background-color: rgb(73, 122, 0);;
+            }
+            .calculate-button:active {
+                background-color: rgb(129, 214, 0);;
+            }
+        </style>
     </head>
     <body>
         <p>Amazon Shipping Calculator</p>
         <p>Order under $40 = +$10 shipping</p>
         <p>Order over $40 = FREE shipping</p>
-        <input class="js-price" type="text" placeholder="Price" onkeydown="CalculateOnEnter(event)"> <button onclick="CalculatePrice()">Calculate</button>
+        <input class="js-price price-input" type="text" placeholder="Cost of order" onkeydown="CalculateOnEnter(event)"> <button class="calculate-button" onclick="CalculatePrice()">Calculate</button>
         <p class="js-result"></p>
         
         <script>
@@ -15,10 +44,12 @@
             const resultElement = document.querySelector('.js-result');
             function CalculatePrice()
             { 
-                var result = priceElement.value < 40 && priceElement.value > 0 ? Number(priceElement.value) + 10 : Number(priceElement.value);  
+                var result = priceElement.value < 40 && priceElement.value > 0 ? (Number(priceElement.value) * 100 + 10 * 100) / 100 : Number(priceElement.value);  
                 console.log();
                 if(!isNaN(Number(result)))
-                    resultElement.innerHTML = result;
+                {
+                    resultElement.innerHTML = `$${result}`;
+                }
             }
             function CalculateOnEnter(event)
             {
