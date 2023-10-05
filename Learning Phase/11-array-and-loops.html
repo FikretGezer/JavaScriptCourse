@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Arrays and Loops</title>
+    </head>
+    <body>
+        <div>
+            <p>To Do List Practice_1</p>
+            <input class="js-todo" type="text" placeholder="To Do Name"> <button onclick="Print()">Add</button>
+        </div>
+
+        <div style="margin-top: 60px;">
+            <p>To Do List Practice_2</p>
+            <input class="js-todo-imp" type="text" placeholder="To Do Name" onkeydown="CheckKey()"> <button onclick="PrintImp()">Add</button>
+            <div class="containToDo">
+
+            </div>
+        </div>
+
+        <script>
+            //First
+            var toDoList = [];
+            function Print()
+            {
+                const inputElement = document.querySelector('.js-todo');
+                var eventName = inputElement.value;
+                toDoList.push(eventName);
+                console.log(toDoList[toDoList.length - 1]);
+                inputElement.value = '';
+            }
+            
+            //Second
+            var toDoListImp = [];
+            const divEl = document.querySelector('.containToDo');
+            var toDoHTML = '';
+
+            function PrintImp()
+            {
+                const inputElement = document.querySelector('.js-todo-imp');
+                var eventName = inputElement.value;
+                toDoList.push(eventName);
+
+                divEl.innerHTML = LoopToDo(toDoList);
+                inputElement.value = '';
+            }
+            function LoopToDo(array)
+            {
+                toDoHTML = '';
+                for(var i = 0; i < array.length; i++)
+                {
+                    var htmlEvent = `<p>${array[i]}</p>`;
+                    toDoHTML += htmlEvent;
+                }
+                return toDoHTML;
+            }
+            function CheckKey()
+            {
+                if(event.key === 'Enter')
+                    PrintImp();
+            }
+        </script>
+        
+    </body>
+</html>

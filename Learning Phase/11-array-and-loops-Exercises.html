@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Exercises</title>
+    </head>
+    <body>
+        <button onclick="Swap()">Swap</button>
+        <button onclick="Increase(3)">Increaser</button>
+        <button onclick="AddTwoList()">Add</button>
+        <button onclick="ReturnMinMax()">MinMax</button>
+        <button onclick="CountNames()">Count</button>
+        <script>
+            const nums = [10,20,30];
+            function Swap()
+            {
+                const temp = nums[0];
+                nums[0] = nums[nums.length - 1];
+                nums[nums.length - 1] = temp;
+                console.log(nums);
+            }
+            const liste = [1,2,3];
+            function Increase(num)
+            {
+                for (let i = 0; i < liste.length; i++) {
+                    liste[i] += num;                    
+                }
+                console.log(liste);
+            }
+            const liste1 = [1,2,3];
+            const liste2 = [4,5,6];
+            function AddTwoList()
+            {
+                var arry = [];
+                for (let i = 0; i < liste1.length; i++) {
+                    arry.push(liste1[i] + liste2[i]);                    
+                }
+                console.log(arry);
+            }
+            const listMinMax = [12,3,-4,5];
+            var minMax = [];
+            var min = listMinMax[0];
+            var max = listMinMax[0];
+            function ReturnMinMax()
+            {
+                minMax.splice(0, minMax.length);
+                for (let i = 0; i < listMinMax.length; i++) {                    
+                    if(listMinMax[i] < min)
+                        min = listMinMax[i]; 
+                    if(listMinMax[i] > max)
+                        max = listMinMax[i];                    
+                }
+                minMax.push(min);
+                minMax.push(max);
+                console.log(minMax);
+            }
+            const names = ['apple', 'grape', 'apple', 'apple'];
+            function CountNames()
+            {
+                names.sort();
+                var word = names[0];
+                var counter = 1;
+                var result = [];
+                for (let i = 1; i < names.length; i++) {      
+                    if(names[i] === word)
+                    {
+                        counter++;
+                    }
+                    else{
+                        result.push(counter);
+                        counter = 1;
+                        word = names[i];
+                    }
+                }
+                if(counter > 0)
+                    result.push(counter);
+                console.log(result);
+            }
+            let i = 5;
+            while(i >= 0)
+            {
+                console.log(i);
+                i--;
+            }
+        </script>
+    </body>
+</html>
