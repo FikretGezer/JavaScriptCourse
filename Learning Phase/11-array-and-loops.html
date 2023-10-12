@@ -48,7 +48,13 @@
                 toDoHTML = '';
                 for(var i = 0; i < array.length; i++)
                 {
-                    var htmlEvent = `<p>${array[i]}</p>`;
+                    var htmlEvent = `
+                    <p>${array[i]}
+                        <button onclick="
+                            toDoList.splice(${i}, 1);
+                            LoopToDo(toDoList);
+                        ">Delete</button>
+                    </p>`;
                     toDoHTML += htmlEvent;
                 }
                 return toDoHTML;

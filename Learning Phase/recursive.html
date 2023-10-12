@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Recursive</title>
+    </head>
+    <body>
+        <button onclick="Counter(1,5)">Click</button>
+        <script>           
+            const nums = [];
+            function Counter(begin, max)
+            {
+                console.log(begin);
+                if(begin < max)
+                {
+                    begin++;
+                    Counter(begin, max);
+                }
+            }
+        </script>
+    </body>
+</html>

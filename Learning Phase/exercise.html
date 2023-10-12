@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <p><input type="number" id="toCheck" value="18"></p>
+
+        <button onclick="myFunction()">Test</button>
+
+        <p id="demo"></p>
+
+        <script>
+            const numbers = [4, 12, 16, 20];
+
+            function checkValue(x) {
+            return x > document.getElementById("toCheck").value;
+            }
+
+            function myFunction() {
+            document.getElementById("demo").innerHTML = numbers.findIndex(checkValue);
+            }
+        </script>
+    </body>
+</html>
