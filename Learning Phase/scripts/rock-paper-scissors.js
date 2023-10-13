@@ -8,6 +8,38 @@
                 };
             }
             UpdateScoreElement();
+            
+            let isAutoPlaying = true;
+            let intervalId;
+            function Play(sec)
+            {    
+                isAutoPlaying = !isAutoPlaying;               
+                if(!isAutoPlaying)
+                {
+                    let rnd = Math.random();
+                    AutoPlay(rnd);
+                    intervalId = setInterval(() => {
+                        rnd = Math.random();
+                        AutoPlay(rnd);
+                    }, secToMili(sec));
+                }
+                else{
+                    clearInterval(intervalId);
+                }
+            }
+            function secToMili(seconds)
+            {
+                return seconds * 1000;
+            }
+            function AutoPlay(rnd)
+            {                
+                let choice = '';
+                if(rnd <= 1/3) choice = 'rock';
+                else if(rnd <= 2/3 && rnd > 1/3) choice = 'paper';
+                else choice = 'scissors';
+                Game(choice);
+                
+            }
             function Game(choice)
             {
                 var compChoice;
@@ -68,5 +100,7 @@
             {
                 Scores.Win = Scores.Lose = Scores.Tie = 0;
                 localStorage.removeItem('score');
+                document.querySelector('.js-result').innerHTML = '';
+                document.querySelector('.js-moves').innerHTML = '';
                 UpdateScoreElement();
             }
