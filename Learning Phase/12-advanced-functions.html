@@ -4,6 +4,7 @@
         <title>Advanced Functions</title>
     </head>
     <body>
+        <button class="js-click">Click</button>
        <script>
        /*
         Deneme();
@@ -17,8 +18,15 @@
                 return sec * 1000;
             }
         }*/
-        const arr = [1,2,3];
-        arr.forEach((value) => {console.log(value);});
+        /*const arr = [1,2,3];
+        arr.forEach((value) => {console.log(value);});*/        
+        const btnClick = document.querySelector('.js-click');
+        btnClick.addEventListener('click', Play());
+        function Play()
+        {
+            alert(3);
+        }
+        document.body.addEventListener('keydown', (event) => console.log(event.key));
        </script> 
     </body>
 </html>

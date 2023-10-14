@@ -45,9 +45,26 @@ p {
     width: 50px;
 }
 
-.reset-score-button {
+.reset-score-button,
+.autoplay-button,
+.confirmation-buttons {
     border: none;
     background-color: white;
     font-size: 15px;
     padding: 10px 15px;
+}
+
+.js-confirmation {
+    margin-top: 20px;    
+
+    display: flex;
+    align-items: center;    
+
+    color: white;
+}
+
+.conf-yes,
+.conf-no {
+    padding: 2px 10px;
+    margin-left: 10px;
 }

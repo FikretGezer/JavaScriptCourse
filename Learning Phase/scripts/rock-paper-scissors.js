@@ -11,11 +11,28 @@
             
             let isAutoPlaying = true;
             let intervalId;
+            const autoPlayButton = document.querySelector('.autoplay-button');
+            const resetScoreButton = document.querySelector('.reset-score-button');
+
+            autoPlayButton.addEventListener('click', () => Play(1));
+            resetScoreButton.addEventListener('click', () => resetConfirmation());
+
+            document.body.addEventListener('keydown', (event) => {
+                if(event.key === 'a')
+                    Play(1);
+            });
+
+            document.body.addEventListener('keydown', (event) => {
+                if(event.key === 'Backspace')
+                    ResetConfirmation();
+            });
+            
             function Play(sec)
             {    
                 isAutoPlaying = !isAutoPlaying;               
                 if(!isAutoPlaying)
                 {
+                    autoPlayButton.innerHTML = 'Stop Playing';
                     let rnd = Math.random();
                     AutoPlay(rnd);
                     intervalId = setInterval(() => {
@@ -24,6 +41,7 @@
                     }, secToMili(sec));
                 }
                 else{
+                    autoPlayButton.innerHTML = 'Auto Play';
                     clearInterval(intervalId);
                 }
             }
@@ -95,6 +113,25 @@
             function UpdateScoreElement()
             {
                 document.querySelector('.js-score').innerHTML = `Win: ${Scores.Win}, Lose: ${Scores.Lose}, Tie: ${Scores.Tie}`;
+            }
+            
+            function resetConfirmation()
+            {
+                const confirmContainer = document.querySelector('.js-confirmation');
+                confirmContainer.innerHTML = `Are you sure you want to reset it? 
+                <button class="confirmation-buttons conf-yes">Yes</button>
+                <button class="confirmation-buttons conf-no">No</button>`;
+                
+                const yesButton = document.querySelector('.conf-yes');
+                const noButton = document.querySelector('.conf-no');
+
+                yesButton.addEventListener('click', () => {
+                    confirmContainer.innerHTML = '';
+                    ResetScore();
+                });
+                noButton.addEventListener('click', () => {
+                    confirmContainer.innerHTML = '';
+                });            
             }
             function ResetScore()
             {

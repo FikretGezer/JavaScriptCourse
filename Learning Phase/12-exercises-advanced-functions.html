@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Exercises</title>
+    </head>
+    <body>
+        <button class="js-change-it" onclick="changeIt()">Start</button>
+        <button class="js-add-cart" onclick="ShowCartMessage()">Add To The Cart</button>
+        <p class="js-cart"></p>
+        <button onclick="addMessage()">Add</button>
+        <button onclick="removeMessage()">Remove</button>
+        <script>
+            /*
+            //#region Exercise 1
+                // function runTwice(fun)
+                // {
+                //     fun();
+                //     fun();                
+                // }
+                // let func = () => console.log(2+3);
+                // runTwice(func);
+            //#endregion 
+            //#region Exercise 2
+                const btn = document.querySelector('.js-change-it');     
+                function changeIt()
+                {
+                    btn.innerHTML = 'Loading...';
+                    setTimeout(()=>{btn.innerHTML = 'Finished';}, 1000);
+                }         
+            //#endregion  
+            //#region Exercise 3
+            //#region Exercise 4
+            let mesCount;
+            if(mesCount == undefined)
+                mesCount = 0;
+            setInterval(() => {         
+                if(mesCount > 0)
+                {
+                    if(document.title == 'Exercises')
+                    {
+                        document.title = `(${mesCount}) Messages`;                  
+                    }
+                    else
+                        document.title = 'Exercises';                        
+                }  
+                else {
+                    document.title = 'Exercises';                                            
+                }
+            }, 1000);
+            function addMessage()
+            {
+                mesCount++;
+            }
+            function removeMessage()
+            {
+                if(mesCount > 0) mesCount--;
+            }
+            //#endregion 
+            //#region Exercise 5
+                const multiply = (number1, number2) => number1 * number2;
+                console.log(multiply(3,5));
+            //#endregion
+            //#region Exercise 6
+                const countPositives = array => {
+                    let count = 0;
+                    array.forEach(element => {
+                        count += element > 0 ? 1 : 0;
+                    });
+                    return count;
+                }
+                console.log(countPositives([1,-3,5]));
+            //#endregion
+            //#region Exercise 7
+            function addNum(arr, num)
+            {
+                console.log(arr.map((element) => element * num));
+            }
+            addNum([1,2,3],2);
+            //#endregion
+            */
+            //#region Exercise 8
+                const removeEgg = (foods) => {
+                    let count = 0;
+                    foods.filter((food) => {
+                        if(food === 'egg' && count < 2) {
+                            count++;
+                            return false;
+                        }
+                        console.log(food);
+                    })
+                }
+                removeEgg(['egg', 'apple', 'egg', 'ham', 'egg']);
+            //#endregion
+                
+        
+        </script>
+    </body>
+</html>
