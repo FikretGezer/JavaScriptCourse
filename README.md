@@ -1,18 +1,18 @@
 # JavaScriptCourse
 ## Things I've done during this course
-### Rock Paper Scissors Game:
+<h2> Rock Paper Scissors Game: </h2>
 <p align="center">
   <img src="/images/rock-paper-scissors.jpg">
 </p>
-### Stopwatch:
+<h2> Stopwatch: </h2>
 <p align="center">
   <img src="/images/stopwatch.jpg">
 </p>
-### Tic-Tac-Toe:
+<h2> Tic-Tac-Toe: </h2>
 <p align="center">
   <img src="/images/tic-tac-toe.jpg">
 </p>
-### To Do List:
+<h2> To Do List: </h2>
 <p align="center">
   <img src="/images/todo.jpg">
 </p>
