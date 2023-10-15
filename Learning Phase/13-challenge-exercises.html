@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>13 Challenge Exercises</title>
+    </head>
+    <style>
+        .add-to-cart {
+            background-color:  yellow;
+            box-shadow: 0 0 5px rgba(0,0,0,0.6);
+
+            border: none;
+            border-radius: 20px;
+
+            padding: 10px 30px;
+
+            font-weight: bold;
+            font-size: 20px;            
+        }
+        .added-pop-up {
+            margin-top: 10px;
+            margin-left: 10px;
+
+            font-weight: bold;
+            font-size: 20px;
+
+            color: green;
+        }
+    </style>
+    <body>
+        <button class="add-to-cart">Add To Cart</button>
+        <div class="added-pop-up">Added</div>
+        <script>
+            const popUp = document.querySelector('.added-pop-up');
+            const addButton = document.querySelector('.add-to-cart');
+
+            popUp.style.opacity = 0;
+            let isClicked = false;
+            let tOut;
+            addButton.addEventListener('click', () => {
+                clearTimeout(tOut);
+                popUp.style.opacity = 1;
+                isClicked = true;
+                tOut = setTimeout(() => {
+                    popUp.style.opacity = 0;
+                    isClicked = false;
+                }, 2000);
+            });
+
+        </script>
+    </body>
+</html>
